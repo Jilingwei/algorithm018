@@ -1,22 +1,22 @@
 import java.util.HashMap;
 
 public class LeetCode105 {
-    HashMap<Integer, Integer> map = new HashMap<>();
+    private int in = 0;
+    private int pre = 0;
+
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        int lengthPre = preorder.length;
-        int lengthIn = inorder.length;
-        if (lengthIn != lengthPre) throw new RuntimeException("Incorrect input data !!");
-        // 中序遍历存入HashMap
-        for (int i = 0; i < map.size(); i++) {
-            map.put(inorder[i], i);
-        }
-        return helpBuildTree(preorder, inorder, 1, lengthPre - 1, 0);
+        return build(preorder, inorder, Integer.MIN_VALUE);
     }
 
-    public TreeNode helpBuildTree(int[] preorder, int[]inorder, int preLeft, int max, int inLeft){
-        // terminate
-        if (preLeft > max) return null;
-
-        
+    private TreeNode build(int[] preorder, int[] inorder, int stop) {
+        if (pre >= preorder.length) return null;
+        if (inorder[in] == stop) {
+            in++;
+            return null;
+        }
+        TreeNode node = new TreeNode(preorder[pre++]);
+        node.left = build(preorder, inorder, node.val);
+        node.right = build(preorder, inorder, stop);
+        return node;
     }
 }
