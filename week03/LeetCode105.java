@@ -4,6 +4,7 @@ public class LeetCode105 {
     private int in = 0;
     private int pre = 0;
 
+    // 不得不说这个做法的真的是 惊为天人
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return build(preorder, inorder, Integer.MIN_VALUE);
     }
