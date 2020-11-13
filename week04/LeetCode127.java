@@ -1,4 +1,7 @@
-package PACKAGE_NAME;
+import java.util.List;
 
-public class LeetCode127 {
+class Solution {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+
+    }
 }
