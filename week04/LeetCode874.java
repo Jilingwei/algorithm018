@@ -12,7 +12,7 @@ public class LeetCode874 {
         int ans = 0;
         // 障碍点集合
         Set<String> set = new HashSet<>();
-        for (int[] arr:obstacles) set.add(arr[0] + "," + arr[1]);
+        for (int[] arr : obstacles) set.add(arr[0] + "," + arr[1]);
 
         for (int i = 0; i < commands.length; i++) {
             // dircetion % 4取得当前方向
@@ -21,7 +21,7 @@ public class LeetCode874 {
             // 向左90度
             if (commands[i] == -2) dircetion = (dircetion + 3) % 4;
             // 直走
-            if (commands[i] > 0){
+            if (commands[i] > 0) {
                 // 一步步移动 判断是否会走到障碍点
                 for (int j = 0; j < commands[i]; j++) {
                     // 移动
@@ -30,16 +30,16 @@ public class LeetCode874 {
                     if (dircetion == 2) next_y = y - 1;
                     if (dircetion == 3) next_x = x - 1;
                     // 判断是否在障碍点
-                    if (set.contains(next_x + "," + next_y)){
+                    if (set.contains(next_x + "," + next_y)) {
                         // 碰到障碍点 取消本轮移动
                         next_x = x;
                         next_y = y;
                         break;
-                    } else{
+                    } else {
                         // 非障碍点 正常移动
                         x = next_x;
                         y = next_y;
-                        ans = Math.max(ans, x*x + y*y);
+                        ans = Math.max(ans, x * x + y * y);
                     }
                 }
             }
