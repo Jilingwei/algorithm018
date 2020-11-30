@@ -15,7 +15,7 @@ public class LeetCode529 {
 
     }
 
-    // click E
+    //L click E
     char[][] clickE(char[][] board, int r, int c) {
         // 判断周围是否有地雷
         int mineNum0 = getMineNum(board, r, c);
